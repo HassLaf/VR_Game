@@ -22,7 +22,18 @@ public class CharacterControllerScript : MonoBehaviour
             enabled = false; // Disable script if the component is missing
         }
     }
+    
+    void OnTriggerEnter(Collider other)
+{
+    if (other.gameObject.CompareTag("tooth"))
+    {
+        // Collect the teeth
+        Debug.Log("Tooth Collected!");
 
+        // Destroy the teeth object
+        Destroy(other.gameObject);
+    }
+}
     void Update()
     {
         // Check if the character is on the ground
