@@ -7,10 +7,13 @@ using TMPro;
 public class CharacterControllerScript : MonoBehaviour
 {
     public TextMeshProUGUI toothCounterText; // Reference to the UI text
+    public TextMeshProUGUI timerText;
     private int toothCount = 0; // Variable to store collected teeth
     public float speed = 5f;
     public float gravity = 9.81f;
     public float jumpHeight = 2f;
+    private float timer = 300f; // Initialiser à 5 minutes (300 secondes)
+    private bool timerActive = true; // Booléen pour vérifier si le timer est actif
 
 
     private CharacterController controller;
@@ -43,6 +46,19 @@ public class CharacterControllerScript : MonoBehaviour
 }
     void Update()
     {
+        // Gérer le timer
+        if (timerActive)
+        {
+            timer -= Time.deltaTime; // Décrémente le timer
+            if (timer <= 0f)
+            {
+                timer = 0f; // Evite que le timer devienne négatif
+                timerActive = false; // Arrêter le timer une fois qu'il atteint zéro
+                Debug.Log("Timer finished!");
+                // Tu peux ajouter un événement ici, comme arrêter le jeu ou afficher un message
+            }
+            UpdateTimerDisplay(); // Mettre à jour l'affichage du timer
+        }
         // Check if the character is on the ground
         isGrounded = controller.isGrounded;
         if (isGrounded && velocity.y < 0)
@@ -71,7 +87,21 @@ public class CharacterControllerScript : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
-
+    void UpdateTimerDisplay()
+    {
+        if (timerText != null)
+        {
+            // Calculer les minutes et secondes
+            int minutes = Mathf.FloorToInt(timer / 60);
+            int seconds = Mathf.FloorToInt(timer % 60);
+            // Affichage du timer sur l'UI au format "MM:SS"
+            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        }
+        else
+        {
+            Debug.LogError("timerText is NULL! Assign it in the Inspector.");
+        }
+    }
     
     void UpdateToothCounter(){
     if (toothCounterText != null)

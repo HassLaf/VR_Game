@@ -3259,7 +3259,7 @@ GameObject:
   - component: {fileID: 511817146}
   - component: {fileID: 511817145}
   m_Layer: 5
-  m_Name: Timer
+  m_Name: timerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3279,9 +3279,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2101248013}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 413, y: -331}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &511817145
@@ -5610,6 +5610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toothCounterText: {fileID: 2099078162}
+  timerText: {fileID: 511817145}
   speed: 5
   gravity: 9.81
   jumpHeight: 2
@@ -10207,8 +10208,16 @@ PrefabInstance:
       value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 8757121328718178762, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_Pivot.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8757121328718178762, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_Pivot.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8757121328718178762, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8757121328718178762, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_AnchorMax.y
@@ -10216,7 +10225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8757121328718178762, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8757121328718178762, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_AnchorMin.y
@@ -10244,15 +10253,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8757121328718178762, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.00000104074
       objectReference: {fileID: 0}
     - target: {fileID: 8757121328718178762, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 437
+      value: -238.99991
       objectReference: {fileID: 0}
     - target: {fileID: 8757121328718178762, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -331
+      value: -181.00003
       objectReference: {fileID: 0}
     - target: {fileID: 9014170783809206335, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_LocalScale.z
