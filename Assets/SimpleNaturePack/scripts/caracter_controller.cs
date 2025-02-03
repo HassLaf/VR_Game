@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CharacterControllerScript : MonoBehaviour
 {
+    public TextMeshProUGUI toothCounterText; // Reference to the UI text
+    private int toothCount = 0; // Variable to store collected teeth
     public float speed = 5f;
     public float gravity = 9.81f;
     public float jumpHeight = 2f;
@@ -15,6 +18,7 @@ public class CharacterControllerScript : MonoBehaviour
     void Start()
     {
          controller = GetComponent<CharacterController>();
+         UpdateToothCounter();
     
         if (controller == null)
         {
@@ -29,9 +33,10 @@ public class CharacterControllerScript : MonoBehaviour
     {
         // Collect the teeth
         Debug.Log("Tooth Collected!");
-
-        // Destroy the teeth object
-        Destroy(other.gameObject);
+        toothCount++; // Increase count
+        UpdateToothCounter(); // Update UI
+        Destroy(other.gameObject); // Remove the collected tooth
+        
     }
 }
     void Update()
@@ -60,4 +65,15 @@ public class CharacterControllerScript : MonoBehaviour
         velocity.y -= gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
+    void UpdateToothCounter(){
+    if (toothCounterText != null)
+    {
+        toothCounterText.text = "Teeth: " + toothCount;
+        Debug.Log("UI Updated: Teeth Count = " + toothCount);
+    }
+    else
+    {
+        Debug.LogError("toothCounterText is NULL! Assign it in the Inspector.");
+    }
+}
 }
